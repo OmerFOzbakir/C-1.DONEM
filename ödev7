@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    while (1) {
+        int matris1[3][3], matris2[3][3], sonuc[3][3] = {0};
+        int i, j, k;
+
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
+                printf("1. Matris [%d][%d]: ", i + 1, j + 1);
+                scanf("%d", &matris1[i][j]);
+            }
+        }
+
+        printf("\n");
+
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
+                printf("2. Matris [%d][%d]: ", i + 1, j + 1);
+                scanf("%d", &matris2[i][j]);
+            }
+        }
+
+        printf("\nIki Matrisin Carpimi:\n");
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
+                for (k = 0; k < 3; k++) {
+                    sonuc[i][j] += matris1[i][k] * matris2[k][j];
+                }
+                printf("%d\t", sonuc[i][j]);
+            }
+            printf("\n");
+        }
+        
+        printf("\nYeni islem basliyor...\n\n");
+    }
+
+    return 0;
+}
