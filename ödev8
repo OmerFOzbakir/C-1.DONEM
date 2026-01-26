@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    srand(time(NULL));
+    int matris[10][10];
+    int i, j, n, m, kontrol, toplam = 0;
+
+    for (i = 0; i < 10; i++) {
+        for (j = 0; j < 10; j++) {
+            matris[i][j] = rand() % 100;
+            printf("%2d ", matris[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n-----------------------------------\n");
+    printf("Matristeki Asal Sayilar:\n");
+
+    for (i = 0; i < 10; i++) {
+        for (j = 0; j < 10; j++) {
+            m = matris[i][j];
+            
+            if (m < 2) continue;
+
+            kontrol = 0;
+            for (n = 2; n <= m / 2; n++) {
+                if (m % n == 0) {
+                    kontrol = 1;
+                    break;
+                }
+            }
+
+            if (kontrol == 0) {
+                printf("[%d][%d] konumundaki asal: %d\n", i, j, m);
+                toplam += m;
+            }
+        }
+    }
+
+    printf("\nAsal Sayilarin Toplami: %d\n", toplam);
+
+    return 0;
+}
