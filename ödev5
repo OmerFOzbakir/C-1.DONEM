@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    int sayi, i, toplam = 0, adet = 0;
+    float ortalama;
+
+    printf("Kaca kadar saysin? ");
+    scanf("%d", &sayi);
+
+    for (i = 0; i <= sayi; i = i + 2) {
+        toplam = toplam + i;
+        adet = adet + 1;
+    }
+
+    if (adet > 0) {
+        ortalama = (float)toplam / adet;
+        printf("%d'e kadar olan cift sayilarin toplami = %d\n", sayi, toplam);
+        printf("%d'e kadar olan cift sayilarin ortalamasi = %.2f\n", sayi, ortalama);
+    } else {
+        printf("Hesaplanacak sayi bulunamadi.\n");
+    }
+
+    return 0;
+}
