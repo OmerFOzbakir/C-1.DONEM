@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int vize, final, but;
+    float sonuc;
+
+    printf("Vize notunuzu giriniz: ");
+    scanf("%d", &vize);
+
+    printf("Final notunuzu giriniz: ");
+    scanf("%d", &final);
+
+    sonuc = (vize * 0.4) + (final * 0.6);
+
+    if (sonuc >= 0 && sonuc < 60) {
+        printf("Ortalamaniz: %.2f\nButunlemeye kaldiniz.\n", sonuc);
+        printf("Butunleme notu giriniz: ");
+        scanf("%d", &but);
+
+        sonuc = (vize * 0.4) + (but * 0.6);
+
+        if (sonuc < 60) {
+            printf("Kaldiniz! Ortalamaniz: %.2f\n", sonuc);
+        } else {
+            printf("Gectiniz! Ortalamaniz: %.2f\n", sonuc);
+        }
+    } 
+    else if (sonuc >= 60 && sonuc <= 100) {
+        printf("Gectiniz! Ortalamaniz: %.2f\n", sonuc);
+    } 
+    else {
+        printf("Gecersiz not araligi\n");
+    }
+
+    return 0;
+}
