@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char cumle[100];
+    char kelime[100];
+    int i, j, bulundu = 0;
+
+    printf("Bir cumle giriniz: ");
+    fgets(cumle, sizeof(cumle), stdin);
+    cumle[strcspn(cumle, "\n")] = '\0';
+
+    printf("Aramak istediginiz kelimeyi giriniz: ");
+    fgets(kelime, sizeof(kelime), stdin);
+    kelime[strcspn(kelime, "\n")] = '\0';
+
+    int cumle_uzunluk = strlen(cumle);
+    int kelime_uzunluk = strlen(kelime);
+
+    for (i = 0; i <= cumle_uzunluk - kelime_uzunluk; i++) {
+        for (j = 0; j < kelime_uzunluk; j++) {
+            if (cumle[i + j] != kelime[j]) {
+                break;
+            }
+        }
+
+        if (j == kelime_uzunluk) {
+            printf("%d. indexten basliyor! %d. indexte bitiyor!\n", i, i + kelime_uzunluk - 1);
+            bulundu = 1;
+        }
+    }
+
+    if (!bulundu) {
+        printf("Kelime bulunamadi.\n");
+    }
+
+    return 0;
+}
