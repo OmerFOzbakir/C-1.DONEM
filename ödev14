@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void asalkontrol(int sayi) {
+    int kontrol = 0;
+
+    if (sayi <= 1) {
+        printf("Asal degildir!\n");
+        return;
+    }
+
+    for (int i = 2; i < sayi; i++) {
+        if (sayi % i == 0) {
+            kontrol = 1;
+            break;
+        }
+    }
+
+    if (kontrol == 0) {
+        printf("Asaldir!\n");
+    } else {
+        printf("Asal degildir!\n");
+    }
+}
+
+int main() {
+    int sayi;
+
+    printf("Lutfen bir sayi giriniz: ");
+    scanf("%d", &sayi);
+
+    asalkontrol(sayi);
+
+    return 0;
+}
