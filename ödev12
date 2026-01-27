@@ -24,7 +24,7 @@ int main() {
     if (n >= r) {
         printf("Sonuc: %d\n", kombinasyon(n, r));
     } else {
-        printf("Hata: n degeri r'den kucuk olamaz\n");
+        printf("Hata! n degeri r'den kucuk olamaz\n");
     }
 
     return 0;
