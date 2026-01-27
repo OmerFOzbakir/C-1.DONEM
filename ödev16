@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+struct ogrenci {
+    char ad[40];
+    char soyad[40];
+    int no;
+    struct ders {
+        int ders_kod;
+        int vize;
+        int final;
+        double gecmenotu;
+    } dersbilgi[5];
+} ogrencibilgi[3];
+
+int main() {
+    double toplam_gecmenotu = 0;
+
+    for (int i = 0; i < 3; i++) {
+        printf("%d. Ogrencinin Adini Giriniz: ", i + 1);
+        scanf("%s", ogrencibilgi[i].ad);
+        printf("%d. Ogrencinin Soyadini Giriniz: ", i + 1);
+        scanf("%s", ogrencibilgi[i].soyad);
+        printf("%d. Ogrencinin Okul Numarasini Giriniz: ", i + 1);
+        scanf("%d", &ogrencibilgi[i].no);
+
+        for (int j = 0; j < 5; j++) {
+            printf("%d. Dersin Kodunu Giriniz: ", j + 1);
+            scanf("%d", &ogrencibilgi[i].dersbilgi[j].ders_kod);
+            printf("%d. Dersin Vize Notunu Giriniz: ", j + 1);
+            scanf("%d", &ogrencibilgi[i].dersbilgi[j].vize);
+            printf("%d. Dersin Final Notunu Giriniz: ", j + 1);
+            scanf("%d", &ogrencibilgi[i].dersbilgi[j].final);
+
+            ogrencibilgi[i].dersbilgi[j].gecmenotu = (ogrencibilgi[i].dersbilgi[j].vize * 0.4) + (ogrencibilgi[i].dersbilgi[j].final * 0.6);
+        }
+
+        printf("\nOgrenci: %s %s (%d)", ogrencibilgi[i].ad, ogrencibilgi[i].soyad, ogrencibilgi[i].no);
+        for (int j = 0; j < 5; j++) {
+            printf("\n%d. Ders Ortalamasi: %.2lf", j + 1, ogrencibilgi[i].dersbilgi[j].gecmenotu);
+        }
+        printf("\n\n---------------------------\n\n");
+    }
+
+    for (int i = 0; i < 5; i++) {
+        toplam_gecmenotu = 0;
+        for (int j = 0; j < 3; j++) {
+            toplam_gecmenotu += ogrencibilgi[j].dersbilgi[i].gecmenotu;
+        }
+        printf("%d. Dersin Sinif Ortalamasi: %.2lf\n", i + 1, toplam_gecmenotu / 3);
+    }
+
+    return 0;
+}
