@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    char metin[100];
+    int c = 0, harf[26] = {0}, bharf[26] = {0};
+
+    printf("Lutfen metninizi Giriniz: ");
+    fgets(metin, sizeof(metin), stdin);
+
+    while (metin[c] != '\0') {
+        if (metin[c] >= 65 && metin[c] <= 90)
+            bharf[metin[c] - 65]++;
+        if (metin[c] >= 97 && metin[c] <= 122)
+            harf[metin[c] - 97]++;
+        c++;
+    }
+
+    for (c = 0; c < 26; c++) {
+        if (bharf[c] != 0)
+            printf("\t%c karakteri metinde %d defa yeralmistir \n", c + 'A', bharf[c]);
+    }
+
+    for (c = 0; c < 26; c++) {
+        if (harf[c] != 0)
+            printf("\t%c karakteri metinde %d defa yeralmistir \n", c + 'a', harf[c]);
+    }
+
+    return 0;
+}
