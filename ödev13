@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int basamak_toplami(int sayi) {
+    int toplam = 0, kalan;
+    
+    if (sayi < 0) sayi = -sayi;
+
+    while (sayi > 0) {
+        kalan = sayi % 10;
+        toplam = toplam + kalan;
+        sayi = sayi / 10;
+    }
+    return toplam;
+}
+
+int main() {
+    int sayi;
+    
+    printf("Lutfen bir sayi giriniz: ");
+    scanf("%d", &sayi);
+    
+    printf("Basamaklarin toplami: %d\n", basamak_toplami(sayi));
+    
+    return 0;
+}
