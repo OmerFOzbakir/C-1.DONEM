@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int dizi[20];
+    int i, j, cifttoplam = 0;
+    int enbuyuk;
+    float sonuc;
+
+    for (i = 0; i < 20; i++) {
+        printf("Dizinin %d. elemanini giriniz: ", i + 1);
+        scanf("%d", &dizi[i]);
+        
+        if (dizi[i] % 2 == 0) {
+            cifttoplam += dizi[i];
+        }
+    }
+
+    enbuyuk = dizi[0];
+    for (j = 1; j < 20; j++) {
+        if (dizi[j] > enbuyuk) {
+            enbuyuk = dizi[j];
+        }
+    }
+
+    printf("\nCift sayilarin toplami: %d\n", cifttoplam);
+    printf("En buyuk eleman: %d\n", enbuyuk);
+
+    if (enbuyuk != 0) {
+        sonuc = (float)cifttoplam / enbuyuk;
+        printf("Sonuc (Toplam / En Buyuk): %.2f\n", sonuc);
+    } else {
+        printf("Hata: En buyuk eleman 0 oldugu icin bolme yapilamaz!\n");
+    }
+
+    return 0;
+}
