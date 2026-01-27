@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+double faktoriyel(int sayi) {
+    double sonuc = 1;
+    for(int i = 1; i <= sayi; i++) {
+        sonuc = sonuc * i;
+    }
+    return sonuc;
+}
+
+int kombinasyon(int n, int r) {
+    if (r > n) return 0;
+    return (int)(faktoriyel(n) / (faktoriyel(r) * faktoriyel(n - r)));
+}
+
+int main() {
+    int n, r;
+
+    printf("n degerini giriniz: ");
+    scanf("%d", &n);
+    printf("r degerini giriniz: ");
+    scanf("%d", &r);
+
+    if (n >= r) {
+        printf("Sonuc: %d\n", kombinasyon(n, r));
+    } else {
+        printf("Hata: n degeri r'den kucuk olamaz\n");
+    }
+
+    return 0;
+}
