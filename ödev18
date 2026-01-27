@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+#include <stdlib.h>
+
+#define SIZE 99
+
+struct MatrisVerisi {
+    int enBuyuk;
+    int enKucuk;
+    float ortalama;
+    int toplam;
+    float standartSapma;
+};
+
+float hesaplaStandartSapma(int dizi[], int n, float ortalama) {
+    float toplamKareFark = 0.0;
+    for (int i = 0; i < n; i++) {
+        toplamKareFark += pow(dizi[i] - ortalama, 2);
+    }
+    return sqrt(toplamKareFark / n);
+}
+
+struct MatrisVerisi verileriAl(void) {
+    struct MatrisVerisi istatistik;
+    int dizi[SIZE];
+    int i, sum = 0;
+
+    srand(time(0));
+
+    for (i = 0; i < SIZE; i++) {
+        dizi[i] = rand() % 100;
+        printf("%d. Sayi: %d\n", i + 1, dizi[i]);
+        sum += dizi[i];
+    }
+
+    istatistik.enBuyuk = dizi[0];
+    istatistik.enKucuk = dizi[0];
+    istatistik.toplam = sum;
+    istatistik.ortalama = (float)sum / SIZE;
+
+    for (i = 1; i < SIZE; i++) {
+        if (dizi[i] > istatistik.enBuyuk) {
+            istatistik.enBuyuk = dizi[i];
+        }
+        if (dizi[i] < istatistik.enKucuk) {
+            istatistik.enKucuk = dizi[i];
+        }
+    }
+
+    istatistik.standartSapma = hesaplaStandartSapma(dizi, SIZE, istatistik.ortalama);
+
+    return istatistik;
+}
+
+void verileriYazdir(struct MatrisVerisi veri) {
+    printf("\n--- SONUCLAR ---\n");
+    printf("En Buyuk: %d\n", veri.enBuyuk);
+    printf("En Kucuk: %d\n", veri.enKucuk);
+    printf("Toplam: %d\n", veri.toplam);
+    printf("Ortalama: %.2f\n", veri.ortalama);
+    printf("Standart Sapma: %.2f\n", veri.standartSapma);
+}
+
+int main(void) {
+    struct MatrisVerisi sonuc;
+    sonuc = verileriAl();
+    verileriYazdir(sonuc);
+    return 0;
+}
